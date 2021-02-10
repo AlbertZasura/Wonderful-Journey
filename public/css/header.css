@@ -25,6 +25,21 @@
     height: 18rem;
 }
 
-a{
+a {
     text-decoration: none !important;
+}
+
+.module {
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* .line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: block-axis;
+} */
+
+.bd-placeholder-img{
+    object-fit: cover;
 }
