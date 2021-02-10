@@ -14,18 +14,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto@gmail.com</td>
-                        <td>
-                            <form action="/" method="post">
-                                @method('delete')
-                                @csrf
-                                <button type="submit" class="btn btn-outline-primary btn-sm my-2 my-sm-0">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
+                    @for ($i = 0; $i < count($users); $i++)
+                        <tr>
+                            <th scope="row">{{ $i + 1 }}</th>
+                            <td> <a href="#">{{ $users[$i]->name }}</a></td>
+                            <td>{{ $users[$i]->email }}</td>
+                            <td>
+                                <form action="/user/{{ $users[$i]->id }}/delete" method="post">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit"
+                                        class="btn btn-outline-primary btn-sm my-2 my-sm-0">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endfor
                 </tbody>
             </table>
         </div>

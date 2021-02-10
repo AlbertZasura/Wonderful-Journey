@@ -52,7 +52,7 @@
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/">Admin</a>
+                            <a class="nav-link active" aria-current="page" href="/admin">Admin</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/user">User</a>
@@ -69,12 +69,9 @@
                                 Category
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/category/beach">Beach</a></li>
-                                <li><a class="dropdown-item" href="/category/Mountain">Mountain</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                <li><a class="dropdown-item" href="/article/category/Beach">Beach</a></li>
+                                <li><a class="dropdown-item" href="/article/category/Mountain">Mountain</a></li>
+                                <li><a class="dropdown-item" href="/article/category/Forest">Forest</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">

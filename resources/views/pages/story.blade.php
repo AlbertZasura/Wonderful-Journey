@@ -6,11 +6,11 @@
         <div class="col">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <img src="img/kuta.jpg" class="card-img-top" alt="...">
-                    <p class="card-text">This is a longer card with
-                        supporting text below as a natural lead-in to additional
-                        content. This content is a little bit longer.</p>
+                    <h5 class="card-title">{{$article->title}}</h5>
+                    <img src="{{asset('img/'.$article->image)}}" class="card-img-top" alt="...">
+                    <p class="card-text">
+                        {{$article->description}}
+                    </p>
                     <a href="/" class="btn btn-outline-primary">Back</a>
                 </div>
             </div>

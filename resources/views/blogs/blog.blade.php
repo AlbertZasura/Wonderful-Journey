@@ -2,10 +2,9 @@
 @section('title', 'Blog')
 
 @section('content')
-    
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <a href="/blog/create" class="btn btn-outline-primary">+ Create Blog</a>
+            <a href="/article/create" class="btn btn-outline-primary mb-3">+ Create Blog</a>
             <table class="table">
                 <thead>
                     <tr>
@@ -15,17 +14,20 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Kuta</td>
-                        <td>
-                            <form action="/" method="post">
-                                @method('delete')
-                                @csrf
-                                <button type="submit" class="btn btn-outline-primary btn-sm my-2 my-sm-0">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
+                    @for ($i = 0; $i < count($articles); $i++)
+                        <tr>
+                            <th scope="row">{{ $i + 1 }}</th>
+                            <td> <a href="/article/{{ $articles[$i]->id }}">{{ $articles[$i]->title }}</a></td>
+                            <td>
+                                <form action="/article/{{ $articles[$i]->id }}/delete" method="post">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit"
+                                        class="btn btn-outline-primary btn-sm my-2 my-sm-0">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endfor
                 </tbody>
             </table>
         </div>

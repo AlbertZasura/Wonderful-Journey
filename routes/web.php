@@ -13,38 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('pages/home');
-});
+Route::get('/', 'ArticleController@index')->name('home');
 
-Route::get('/kuta', function () {
-    return view('pages/story');
-});
+Route::get('/register', 'UserController@create');
+Route::post('/register', 'UserController@store');
+Route::get('/login', 'UserController@index');
+Route::post('/login', 'UserController@check');
+Route::get('/logout', 'UserController@destroy');
+Route::get('/profil', 'UserController@edit');
+Route::get('/user', 'UserController@showUser');
+Route::get('/admin', 'UserController@showAdmin');
+Route::patch('/profil/{userId}/update', 'UserController@update');
+Route::delete('/profil/{userId}/delete', 'UserController@delete');
 
-Route::get('/category/beach', function () {
-    return view('pages/category');
-});
 
-Route::get('/login', function () {
-    return view('auth/login');
-});
-
-Route::get('/register', function () {
-    return view('auth/register');
-});
-
-Route::get('/user', function () {
-    return view('pages/user');
-});
-
-Route::get('/profil', function () {
-    return view('pages/profil');
-});
-
-Route::get('/blog', function () {
-    return view('blogs/blog');
-});
-
-Route::get('/blog/create', function () {
-    return view('blogs/create');
-});
+Route::get('/article/create', 'ArticleController@create');
+Route::post('/article/create', 'ArticleController@store');
+Route::get('/article/{id}', 'ArticleController@show');
+Route::get('/blog', 'ArticleController@blog');
+Route::delete('/article/{id}/delete', 'ArticleController@destroy');
+Route::get('/article/category/{name}', 'CategoryController@show');
