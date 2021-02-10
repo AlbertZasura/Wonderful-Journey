@@ -18,29 +18,24 @@ class ArticleController extends Controller
 
     public function show($id)
     {
-        // if (Auth::check() == false) {
-        //     return redirect('/login');
-        // }
         $article = Article::find($id);
-
         return view('pages.story', ['article' => $article]);
     }
 
     public function blog()
     {
-        // if (Auth::check() == false) {
-        //     return redirect('/login');
-        // }
         $user = Auth::user();
-
         $articles = Article::where('user_id', $user->id)->get();
         return view('blogs.blog', ['articles' => $articles]);
     }
 
     public function destroy($id)
     {
-        Article::destroy($id);
-        return redirect("/blog");
+        if (!Auth::check()) {
+            Article::destroy($id);
+            return redirect("/blog");
+        }
+        return redirect()->home();
     }
 
     public function create()
@@ -58,11 +53,11 @@ class ArticleController extends Controller
         ]);
 
         $image = $request->image;
-        $category=Category::find($request->category);
+        $category = Category::find($request->category);
         if ($image) {
-            $destination_path = 'public/images/'.$category->name;
+            $destination_path = 'public/images/' . $category->name;
             $image_name = $image->getClientOriginalName();
-            
+
             $path = $request->image->storeAs($destination_path, $image_name);
             // str_replace('public', '/storage', Storage::putFileAs('/public/images/products', $request->image, $image_name));
         }
@@ -72,7 +67,7 @@ class ArticleController extends Controller
             'category_id' => $request->category,
             'title' => $request->title,
             'description' => $request->description,
-            'image' =>  $image_name = $category->name."/".$image_name
+            'image' =>  $image_name = $category->name . "/" . $image_name
         ]);
 
         return redirect('/article/create')->with(['success' => 'Post New Blog Successfully']);

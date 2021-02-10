@@ -16,6 +16,8 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
@@ -51,44 +53,66 @@
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page" href="/">Home</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/admin">Admin</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/user">User</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/profil">Profil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/blog">Blog</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                Category
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="/article/category/Beach">Beach</a></li>
-                                <li><a class="dropdown-item" href="/article/category/Mountain">Mountain</a></li>
-                                <li><a class="dropdown-item" href="/article/category/Forest">Forest</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">About Us</a>
-                        </li>
+                        @if (!Auth::check())
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    Category
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="/article/category/Beach">Beach</a></li>
+                                    <li><a class="dropdown-item" href="/article/category/Mountain">Mountain</a></li>
+                                    <li><a class="dropdown-item" href="/article/category/Forest">Forest</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About Us</a>
+                            </li>
+                        @else
+                            @can('isAdmin')
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/admin">Admin</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/user">User</a>
+                                </li>
+                            @endcan
+
+                            @can('isMember')
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/profil">Profil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" aria-current="page" href="/blog">Blog</a>
+                                </li>
+                            @endcan
+                        @endif
+
                     </ul>
                     <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/register">Sign Up</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/login">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="/logout">Logout</a>
-                        </li>
+                        @if (!Auth::check())
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="/register">
+                                    <span><i class="fa fa-user" aria-hidden="true"></i></span>
+                                    Sign Up
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="/login">
+                                    <span><i class="fa fa-sign-in" aria-hidden="true"></i></span>
+                                    Login
+                                </a>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="/logout">
+                                    <span><i class="fa fa-sign-in" aria-hidden="true"></i></span>
+                                    Logout
+                                </a>
+                            </li>
+                        @endif
                     </ul>
+
                 </div>
             </div>
         </nav>

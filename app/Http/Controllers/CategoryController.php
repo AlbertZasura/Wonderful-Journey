@@ -9,11 +9,8 @@ class CategoryController extends Controller
 {
     public function show($name)
     {
-        // if (Auth::check() == false) {
-        //     return redirect('/login');
-        // }
-        $category = Category::where('name',$name)->first();
+        $category = Category::where('name', $name)->first();
         $articles = $category->articles;
-        return view('pages.category', ['articles' => $articles, 'name' =>$category->name]);
+        return view('pages.category', ['articles' => $articles, 'name' => $category->name]);
     }
 }

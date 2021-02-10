@@ -11,33 +11,45 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('auth.login');
+        if (Auth::check()) {
+            return redirect()->home();
+        } else {
+            return view('auth.login');
+        }
     }
 
     public function create()
     {
-        return view('auth.register');
+        if (Auth::check()) {
+            return redirect()->home();
+        } else {
+            return view('auth.register');
+        }
     }
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|min:5|max:255',
-            'email' => 'required|email|unique:users|max:255',
-            'phone' => 'required|numeric|digits_between:1,255',
-            'password' => 'required|confirmed|min:5|max:255',
-        ]);
+        if (Auth::check()) {
+            return redirect()->home();
+        } else {
+            $this->validate($request, [
+                'name' => 'required|min:5|max:255',
+                'email' => 'required|email|unique:users|max:255',
+                'phone' => 'required|numeric|digits_between:1,255',
+                'password' => 'required|confirmed|min:5|max:255',
+            ]);
 
-        $user= User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'phone' => $request->phone,
-            'password' => bcrypt($request->password),
-            'role' => 'Member'
-        ]);
-        
-        Auth::login($user);
-        return redirect('/register')->with(['success' => 'Sign Up Successfully']);
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'phone' => $request->phone,
+                'password' => bcrypt($request->password),
+                'role' => 'Member'
+            ]);
+
+            Auth::login($user);
+            return redirect('/register')->with(['success' => 'Sign Up Successfully']);
+        }
     }
 
     public function edit()
@@ -48,19 +60,13 @@ class UserController extends Controller
 
     public function showUser()
     {
-        // if (Auth::check() == false) {
-        //     return redirect('/login');
-        // }
-        $users = User::where('role','Member')->get();
+        $users = User::where('role', 'Member')->get();
         return view('pages.user', ['users' => $users]);
     }
 
     public function showAdmin()
     {
-        // if (Auth::check() == false) {
-        //     return redirect('/login');
-        // }
-        $users = User::where('role','Admin')->get();
+        $users = User::where('role', 'Admin')->get();
         return view('pages.admin', ['users' => $users]);
     }
 
@@ -82,16 +88,19 @@ class UserController extends Controller
 
     public function check(Request $request)
     {
-        if(! Auth::attempt(['role'=>$request->role,'email' => $request->email, 'password' => $request->password])){
-            return back()->with(['error' => 'Wrong Email and Password']);
+        if (!Auth::check()) {
+            if (!Auth::attempt(['role' => $request->role, 'email' => $request->email, 'password' => $request->password])) {
+                return back()->with(['error' => 'Wrong Email and Password']);
+            }
         }
-
         return redirect()->home();
     }
 
     public function destroy()
     {
-        Auth::logout();
+        if (Auth::check()) {
+            Auth::logout();
+        }
         return redirect()->home();
     }
 
