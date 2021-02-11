@@ -32,11 +32,11 @@ a {
     text-overflow: ellipsis;
 }
 
-/* .line-clamp {
+.line-clamp {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: block-axis;
-} */
+}
 
 .bd-placeholder-img {
     object-fit: cover;

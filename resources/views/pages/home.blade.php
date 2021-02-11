@@ -11,12 +11,9 @@
                 <div class="card">
                     <div class="card-body ">
                         <h5 class="card-title">{{ $article->title }}</h5>
-                        <p class="card-text m-0 module line-clamp">{{ $article->description }}
-                            <a class="d-inline" href="/article/{{ $article->id }}">see</a>
-                        </p>
-                        {{-- <p class="card-text"><span class="truncate">{{ $article->description }}</span><a href="#">Read more</a></p> --}}
-
-                        <p><em>Category: <a
+                        <p class="card-text m-0 module line-clamp">{{ $article->description }}</p>
+                        <a class="d-inline" href="/article/{{ $article->id }}">Read more</a>
+                        <p class="mt-3"><em>Category: <a
                                     href="/article/category/{{ $article->categories->name }}">{{ $article->categories->name }}</a></em>
                         </p>
                     </div>
