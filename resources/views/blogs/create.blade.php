@@ -4,7 +4,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <h3>New Blog</h3>
+            <h3 class="mb-4 line">New Blog</h3>
             @include('layouts.errors')
             <form method="POST" action="/article/create" enctype="multipart/form-data">
                 @csrf

@@ -1,8 +1,8 @@
 @extends('layouts.header')
-@section('title', 'Beach')
+@section('title', $name)
 
 @section('content')
-    <h4 class="mb-3">{{$name}}</h4>
+    <h2 class="mb-4 line">{{$name}}</h2>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach ($articles as $article)
             <div class="col">

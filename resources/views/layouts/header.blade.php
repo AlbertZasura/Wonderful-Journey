@@ -41,7 +41,7 @@
     </div>
 
     <div class="container mb-5">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -61,7 +61,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">About Us</a>
+                                <a class="nav-link" href="/aboutUs">About Us</a>
                             </li>
                         @else
                             @can('isAdmin')
@@ -111,7 +111,10 @@
                 </div>
             </div>
         </nav>
-        @yield('content')
+        <div class="bg-light p-4">
+            @yield('content')
+        </div>
+
     </div>
 
 </body>

@@ -33,3 +33,7 @@ Route::get('/article/{id}', 'ArticleController@show');
 Route::get('/blog', 'ArticleController@blog')->middleware('isMember');
 Route::delete('/article/{id}/delete', 'ArticleController@destroy');
 Route::get('/article/category/{name}', 'CategoryController@show');
+
+Route::get('/aboutUs', function () {
+    return view('pages.about');
+});

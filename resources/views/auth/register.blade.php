@@ -4,7 +4,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <h3>Sign Up</h3>
+            <h3 class="line mb-3">Sign Up</h3>
             @include('layouts.errors')
             <form method="POST" action="/register">
                 @csrf

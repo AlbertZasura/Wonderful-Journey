@@ -1,7 +1,8 @@
 @extends('layouts.header')
-@section('title', 'Admin')
+@section('title', 'Admin Account')
 
 @section('content')
+    <h2 class="text-center mb-4 line">Admin Account</h2>
     <div class="row">
         <div class="col-md-4 offset-md-4">
             <table class="table">

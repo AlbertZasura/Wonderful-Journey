@@ -1,18 +1,16 @@
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
+body {
+    background-color: #e2f3f5;
+}
 
-/* Carousel base class */
 .carousel {
     margin-bottom: 2rem;
 }
 
-/* Since positioning the image, we need to help out the caption */
 .carousel-caption {
     bottom: 4rem;
     z-index: 10;
 }
 
-/* Declare heights because of positioning of img element */
 .carousel-item {
     height: 18rem;
 }
@@ -40,6 +38,11 @@ a {
     -webkit-box-orient: block-axis;
 } */
 
-.bd-placeholder-img{
+.bd-placeholder-img {
     object-fit: cover;
+}
+
+.line {
+    text-decoration: underline #45a29e;
+    color: black;
 }

@@ -3,7 +3,7 @@
 
 @section('content')
     @can('isMember')
-        <h3 class="mb-5 text-center">Welcome {{ Auth::user()->name }}</h3>
+        <h1 class="mb-5 text-center">Welcome <span class="line">{{ Auth::user()->name }}</span></h1>
     @endcan
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach ($articles as $article)

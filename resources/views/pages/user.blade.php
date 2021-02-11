@@ -1,7 +1,8 @@
 @extends('layouts.header')
-@section('title', 'User')
+@section('title', 'User Account')
 
 @section('content')
+    <h2 class="text-center mb-4 line">User Account</h2>
     <div class="row">
         <div class="col-md-4 offset-md-4">
             <table class="table">
@@ -23,8 +24,7 @@
                                 <form action="/user/{{ $users[$i]->id }}/delete" method="post">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit"
-                                        class="btn btn-outline-danger btn-sm my-2 my-sm-0">Delete</button>
+                                    <button type="submit" class="btn btn-outline-danger btn-sm my-2 my-sm-0">Delete</button>
                                 </form>
                             </td>
                         </tr>

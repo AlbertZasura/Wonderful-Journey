@@ -4,6 +4,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-4 offset-md-4">
+            <h2 class="mb-4 line">My Profile</h2>
             @include('layouts.errors')
             <form method="POST" action="/profil/{{ $user->id }}/update">
                 @method('patch')

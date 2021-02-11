@@ -1,9 +1,10 @@
 @extends('layouts.header')
-@section('title', 'Blog')
+@section('title', 'My Blog')
 
 @section('content')
     <div class="row">
         <div class="col-md-4 offset-md-4">
+            <h2 class="mb-4 line">My Blog</h2>
             <a href="/article/create" class="btn btn-outline-primary mb-3">+ Create Blog</a>
             <table class="table">
                 <thead>

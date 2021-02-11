@@ -19,7 +19,8 @@ class ArticleController extends Controller
     public function show($id)
     {
         $article = Article::find($id);
-        return view('pages.story', ['article' => $article]);
+        $articles = Article::all();
+        return view('pages.story', ['article' => $article, 'articles' => $articles]);
     }
 
     public function blog()
