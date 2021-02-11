@@ -2,8 +2,8 @@
 @section('title', $article->title)
 
 @section('content')
-    <div class="row row-cols-1 row-cols-md-2 g-4">
-        <div class="col">
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col col-sm-6 col-md-9">
             <div class="card">
                 <div class="card-body">
                     <h2 class="card-title">{{ $article->title }}</h2>
@@ -16,9 +16,9 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col col-sm-6 col-md-3">
             <div class="row">
-                <div class="col-md-6 offset-md-1">
+                <div class="">
                     <h3 class="mb-4 line">Another Blog</h3>
                     @for ($i = 0; $i < 3; $i++)
                         <div class="card mb-3">
