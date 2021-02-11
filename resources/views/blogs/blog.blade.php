@@ -4,8 +4,14 @@
 @section('content')
     <div class="row">
         <div class="col-md-4 offset-md-4">
-            <h2 class="mb-4 line">My Blog</h2>
-            <a href="/article/create" class="btn btn-outline-primary mb-3">+ Create Blog</a>
+            @can('isMember')
+                <h2 class="mb-4 line">My Blog</h2>
+                <a href="/article/create" class="btn btn-outline-primary mb-3">+ Create Blog</a>
+            @endcan
+
+            @can('isAdmin')
+                <h2 class="mb-4 line">User Blog</h2>
+            @endcan
             <table class="table">
                 <thead>
                     <tr>
@@ -23,8 +29,7 @@
                                 <form action="/article/{{ $articles[$i]->id }}/delete" method="post">
                                     @method('delete')
                                     @csrf
-                                    <button type="submit"
-                                        class="btn btn-outline-danger btn-sm my-2 my-sm-0">Delete</button>
+                                    <button type="submit" class="btn btn-outline-danger btn-sm my-2 my-sm-0">Delete</button>
                                 </form>
                             </td>
                         </tr>

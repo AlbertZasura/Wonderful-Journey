@@ -30,7 +30,8 @@ Route::delete('/user/{id}/delete', 'UserController@delete')->middleware('isAdmin
 Route::get('/article/create', 'ArticleController@create')->middleware('isMember');
 Route::post('/article/create', 'ArticleController@store')->middleware('isMember');
 Route::get('/article/{id}', 'ArticleController@show');
-Route::get('/blog', 'ArticleController@blog')->middleware('isMember');
+Route::get('/blog', 'ArticleController@myBlog')->middleware('isMember');
+Route::get('/blog/{id}', 'ArticleController@blog')->middleware('isAdmin');
 Route::delete('/article/{id}/delete', 'ArticleController@destroy');
 Route::get('/article/category/{name}', 'CategoryController@show');
 

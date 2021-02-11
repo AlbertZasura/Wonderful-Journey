@@ -23,16 +23,22 @@ class ArticleController extends Controller
         return view('pages.story', ['article' => $article, 'articles' => $articles]);
     }
 
-    public function blog()
+    public function myBlog()
     {
         $user = Auth::user();
         $articles = Article::where('user_id', $user->id)->get();
         return view('blogs.blog', ['articles' => $articles]);
     }
 
+    public function blog($id)
+    {
+        $articles = Article::where('user_id', $id)->get();
+        return view('blogs.blog', ['articles' => $articles]);
+    }
+
     public function destroy($id)
     {
-        if (!Auth::check()) {
+        if (Auth::check()) {
             Article::destroy($id);
             return redirect("/blog");
         }

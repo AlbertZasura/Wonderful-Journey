@@ -18,7 +18,7 @@
                     @for ($i = 0; $i < count($users); $i++)
                         <tr>
                             <th scope="row">{{ $i + 1 }}</th>
-                            <td> <a href="#">{{ $users[$i]->name }}</a></td>
+                            <td> <a href="/blog/{{$users[$i]->id}}">{{ $users[$i]->name }}</a></td>
                             <td>{{ $users[$i]->email }}</td>
                             <td>
                                 <form action="/user/{{ $users[$i]->id }}/delete" method="post">
