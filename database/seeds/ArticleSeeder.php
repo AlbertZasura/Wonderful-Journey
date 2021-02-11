@@ -13,7 +13,7 @@ class ArticleSeeder extends Seeder
     public function run()
     {
         $articleTitles = [
-            "Pantai Kuta, Bali", 
+            "Pantai Kuta, Bali",
             "Gunung Merapi, Yogyakarta",
             "Hutan Wonorejo, Semarang"
         ];
@@ -32,10 +32,12 @@ class ArticleSeeder extends Seeder
             "Forest/wonorejo.jpg"
         ];
 
-        for ($i = 0; $i < 3; $i++) {
-            $article = new Article;
-            $article->fill(["title" => $articleTitles[$i],"description" => $articleDescriptions[$i], "image" => $articleImages[$i], "user_id" => 2, "category_id" => $i+1 ]);
-            $article->save();
+        for ($j = 0; $j < 4; $j++) {
+            for ($i = 0; $i < 3; $i++) {
+                $article = new Article;
+                $article->fill(["title" => $articleTitles[$i], "description" => $articleDescriptions[$i], "image" => $articleImages[$i], "user_id" => $j + 5, "category_id" => $i + 1]);
+                $article->save();
+            }
         }
     }
 }
